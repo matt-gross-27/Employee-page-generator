@@ -27,5 +27,6 @@ test('getRole() method to return the constructor name (which is named after role
 });
 
 test('getGithub() method to return the github property of the object', ()=> {
+  expect(engineer.getGithub()).toBe(engineer.github);
   expect(engineer.getGithub()).toBe('python-fran-lib');
 });
