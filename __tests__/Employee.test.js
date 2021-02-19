@@ -24,7 +24,3 @@ test('getEmail() method to return the email property', ()=> {
 test('getRole() method to return the constructor name (which is named after role)', ()=> {
   expect(employee.getRole()).toBe('Employee');
 });
-
-// getEmail()
-
-// getRole() // Returns 'Employee'
