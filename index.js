@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
-const Choices = require('inquirer/lib/objects/choices');
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 const promptUser = (employees) => {
   if(!employees) {
@@ -66,4 +67,17 @@ const promptUser = (employees) => {
 }
 
 promptUser()
-  .then(data => console.log(data));
+  .then(({ role, name, id, email, ...theRest }) => {
+    if (role === 'Employee'){
+      console.log(new Employee(name, id, email))
+    }
+    if (role === 'Manager'){
+      console.log(new Manager(name, id, email, theRest.officeNumber))
+    }
+    if (role === 'Engineer'){
+      console.log(new Engineer(name, id, email, theRest.github))
+    }
+    if (role === 'Intern'){
+      console.log(new Intern(name, id, email, theRest.school))
+    }
+  });
