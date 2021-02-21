@@ -1,8 +1,8 @@
 const fs = require('fs');
 
-const writeFile = fileContent => {
+const writeFile = htmlContent => {
   return new Promise((resolve, reject) => {
-    fs.writeFile('./dist/index.html', fileContent, err => {
+    fs.writeFile('./dist/index.html', htmlContent, err => {
       // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
       if(err) {
         reject(err);
@@ -12,25 +12,10 @@ const writeFile = fileContent => {
       // if everything went well, resolve the Promise and send the successful data to the `.then()` method
       resolve({
         ok: true,
-        message: 'Page created!'
+        message: "Page created => view './dist/index.html'"
       });
     });
   });
 };
 
-const copyFile = () => {
-  return new Promise((resolve, reject) => {
-    fs.copyFile('./src/style.css', './dist/style.css',err => {
-      if(err) {
-        reject(err);
-        return;
-      }
-      resolve({
-        ok: true,
-        message: 'Stylesheet copied to dir: dist'
-      });
-    });
-  });
-};
-
-module.exports = { writeFile , copyFile };
+module.exports = writeFile

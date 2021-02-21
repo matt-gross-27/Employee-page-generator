@@ -3,6 +3,8 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const writeFile = require('./utils/file-system');
+const generatePage = require('./src/page-template');
 
 const promptManager = () => {
   return inquirer.prompt([
@@ -104,5 +106,26 @@ promptManager()
   .then(data => {
     const { name, id, email, officeNumber } = data;
     const manager = new Manager(name, id, email, officeNumber);
-    promptTeam(manager).then(myTeamArr => console.log(myTeamArr))
+    promptTeam(manager).then(myTeamArr => {
+      return generatePage(myTeamArr)
+    })
+    .then(pageHTML => {
+      return writeFile(pageHTML);
+    })
+    .then(response => {
+      console.log(`
+      ========================================
+      ${response.message}
+      ========================================`);
+    })
+    .catch(err => console.log(err));
   })
+  .catch(err => console.log(err));
+
+
+// promptManager()
+//   .then(data => {
+//     const { name, id, email, officeNumber } = data;
+//     const manager = new Manager(name, id, email, officeNumber);
+//     promptTeam(manager).then(myTeamArr => console.log(myTeamArr))
+//   })
