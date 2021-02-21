@@ -4,43 +4,57 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const promptUser = (employees) => {
-  if(!employees) {
-    employees = [];
-  }
-
+const promptManager = () => {
   return inquirer.prompt([
-    {
-      type: 'list',
-      name: 'role',
-      message: 'Which type of Employee would you like to add?',
-      choices: ['Employee', 'Manager', 'Engineer', 'Intern']
-    },
     {
       type: 'input',
       name: 'name',
-      message: "Enter the employee's name"
+      message: "Enter the team manager's name"
     },
     {
       type: 'input',
       name: 'id',
-      message: "Enter the employee's Id"
+      message: "Enter the team manager's Id"
     },
     {
       type: 'input',
       name: 'email',
-      message: "Enter the employee's email"
+      message: "Enter the team manager's email"
     },
     {
       type: 'input',
       name: 'officeNumber',
-      message: "Enter the Manager's office number",
-      when: ({ role }) => {
-        if(role === 'Manager') {
-          return true;
-        }
-        return false;
-      }
+      message: "Enter the team manager's office number",
+    }
+  ])
+};
+
+const promptTeam = (manager, employees) => {
+  if(!employees) {
+    employees = []
+    employees.push(manager);
+  }
+  return inquirer.prompt([
+    {
+      type: 'list',
+      name: 'role',
+      message: 'Which type of team member would you like to add?',
+      choices: ['Engineer', 'Intern']
+    },
+    {
+      type: 'input',
+      name: 'name',
+      message: "Enter the team member's name"
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: "Enter the team member's Id"
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: "Enter the team member's email"
     },
     {
       type: 'input',
@@ -72,12 +86,6 @@ const promptUser = (employees) => {
     }
   ]).then(employeeData => {
     const { role, name, id, email, ...theRest } = employeeData;
-    if (role === 'Employee'){
-      employees.push(new Employee(name, id, email))
-    }
-    if (role === 'Manager'){
-      employees.push(new Manager(name, id, email, theRest.officeNumber))
-    }
     if (role === 'Engineer'){
       employees.push(new Engineer(name, id, email, theRest.github))
     }
@@ -85,14 +93,16 @@ const promptUser = (employees) => {
       employees.push(new Intern(name, id, email, theRest.school))
     }
     if(employeeData.confirmAddEmployee) {
-      return promptUser(employees);
+      return promptTeam(manager, employees);
     } else {
     return employees
     }
   });
 };
 
-promptUser()
-  .then(employees => {
-    console.log(employees);
+promptManager()
+  .then(data => {
+    const { name, id, email, officeNumber } = data;
+    const manager = new Manager(name, id, email, officeNumber);
+    promptTeam(manager).then(myTeamArr => console.log(myTeamArr))
   })
