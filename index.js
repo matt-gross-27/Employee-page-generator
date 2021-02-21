@@ -6,8 +6,9 @@ const Intern = require('./lib/Intern');
 
 const promptUser = (employees) => {
   if(!employees) {
-    employees =[];
+    employees = [];
   }
+
   return inquirer.prompt([
     {
       type: 'list',
@@ -62,22 +63,36 @@ const promptUser = (employees) => {
         }
         return false;
       }
+    },
+    {
+      type: 'confirm',
+      name: 'confirmAddEmployee',
+      message: 'Would you like to add another employee?',
+      default: false
     }
-  ])
-}
-
-promptUser()
-  .then(({ role, name, id, email, ...theRest }) => {
+  ]).then(employeeData => {
+    const { role, name, id, email, ...theRest } = employeeData;
     if (role === 'Employee'){
-      console.log(new Employee(name, id, email))
+      employees.push(new Employee(name, id, email))
     }
     if (role === 'Manager'){
-      console.log(new Manager(name, id, email, theRest.officeNumber))
+      employees.push(new Manager(name, id, email, theRest.officeNumber))
     }
     if (role === 'Engineer'){
-      console.log(new Engineer(name, id, email, theRest.github))
+      employees.push(new Engineer(name, id, email, theRest.github))
     }
     if (role === 'Intern'){
-      console.log(new Intern(name, id, email, theRest.school))
+      employees.push(new Intern(name, id, email, theRest.school))
+    }
+    if(employeeData.confirmAddEmployee) {
+      return promptUser(employees);
+    } else {
+    return employees
     }
   });
+};
+
+promptUser()
+  .then(employees => {
+    console.log(employees);
+  })
