@@ -15,6 +15,7 @@ Employee Page Generator is a command-line application that accepts user inputs t
   - [Description](#description)
   - [Installation](#installation)
   - [Usage](#usage)
+    - [Demo Video](#demo)
   - [Credits](#credits)
   - [License](#license)
   - [Tests](#tests)
@@ -36,6 +37,15 @@ Employee Page Generator is a command-line application that accepts user inputs t
 - Run the command ```node index.js``` to start the application. 
 - Answer the following prompts. 
 - When you are finished answering the prompts check your html file here => ./dist/index.html
+- When you open ./dist/index.html in the browser, the page should like something like this:
+
+![page-screen-shot](./assets/images/html-page-ss.png)
+
+<a href = "#demo"></a>
+### Demo Video
+
+![demo-video](./assets/demo/demo-video.gif)
+
 
 <a href = "#credits"></a>
 
