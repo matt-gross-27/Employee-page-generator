@@ -11,22 +11,55 @@ const promptManager = () => {
     {
       type: 'input',
       name: 'name',
-      message: "Enter the team manager's name"
+      message: "Enter your team manager's name. (Required)",
+      validate: input => {
+        if(input) {
+          return true;
+        } else {
+          console.log("Please enter your team manager's name.");
+          return false;
+        }
+      }
     },
     {
       type: 'input',
       name: 'id',
-      message: "Enter the team manager's Id"
+      message: "Enter the team manager's employee Id. (Required)",
+      validate: input => {
+        if(input) {
+          return true;
+        } else {
+          console.log("Please enter your team manager's employee Id.");
+          return false;
+        }
+      }
     },
     {
       type: 'input',
       name: 'email',
-      message: "Enter the team manager's email"
+      message: "Enter the team manager's email. (Required)",
+      validate: input => {
+        const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/    
+        if(emailRegex.test(input)) {
+          return true;
+        } else {
+          console.log("Please enter a valid email.");
+          return false;
+        }
+      }
     },
     {
       type: 'input',
       name: 'officeNumber',
-      message: "Enter the team manager's office number",
+      message: "Enter the team manager's office number (Required)",
+      validate: input => {
+        if(input) {
+          return true;
+        } else {
+          console.log("Please enter your team manager's Office Number.");
+          return false;
+        }
+      }
     }
   ])
 };
@@ -46,22 +79,55 @@ const promptTeam = (manager, employees) => {
     {
       type: 'input',
       name: 'name',
-      message: "Enter the team member's name"
+      message: "Enter your team member's name. (Required)",
+      validate: input => {
+        if(input) {
+          return true;
+        } else {
+          console.log("Please enter your team member's name.");
+          return false;
+        }
+      }
     },
     {
       type: 'input',
       name: 'id',
-      message: "Enter the team member's Id"
+      message: "Enter your team member's Id",
+      validate: input => {
+        if(input) {
+          return true;
+        } else {
+          console.log("Please enter your team member's id.");
+          return false;
+        }
+      }
     },
     {
       type: 'input',
       name: 'email',
-      message: "Enter the team member's email"
+      message: "Enter your team member's email",
+      validate: input => {
+        if(input) {
+          return true;
+        } else {
+          console.log("Please enter your team member's email.");
+          return false;
+        }
+      }
     },
     {
       type: 'input',
       name: 'github',
-      message: "Enter the Engineer's github username",
+      message: "Enter your Engineer's github username",
+      validate: input => {
+        const githubRegex =  new RegExp(/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i)
+        if(githubRegex.test(input)) {
+          return true;
+        } else {
+          console.log("Please enter a valid github username.");
+          return false;
+        }
+      },
       when: ({ role }) => {
         if(role === 'Engineer') {
           return true;
@@ -72,7 +138,15 @@ const promptTeam = (manager, employees) => {
     {
       type: 'input',
       name: 'school',
-      message: "Enter the Intern's school",
+      message: "Enter your Intern's school",
+      validate: input => {
+        if(input) {
+          return true;
+        } else {
+          console.log("Please enter your intern's school.");
+          return false;
+        }
+      },
       when: ({ role }) => {
         if(role === 'Intern') {
           return true;

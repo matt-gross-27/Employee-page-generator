@@ -31,7 +31,7 @@ const mapInterns = internArr => {
 };
 
 
-module.exports = pageData => {
+generatePage = pageData => {
   // filter data by Employee type (constructor.name)
   const result = pageData.filter(Obj => Obj.constructor.name === 'Manager');
   manager = result[0];
@@ -77,3 +77,5 @@ module.exports = pageData => {
   </html>
   `
   }
+
+  module.exports = generatePage;
