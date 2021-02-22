@@ -1,28 +1,64 @@
-# Employee-page-generator
+# Employee Page Generator
 
-Acceptance Criteria
-GIVEN a command-line application that accepts user input
+<div style="position: absolute; top: 22px; right: 50px">
 
-WHEN I am prompted for my team members and their information
-THEN an HTML file is generated that displays a nicely formatted team roster based on user input
+![licence: MIT](https://img.shields.io/badge/license-MIT-blue)
+</div>
 
-WHEN I click on an email address in the HTML
-THEN my default email program opens and populates the TO field of the email with the address
+<a href = "#description"></a>
 
-WHEN I click on the GitHub username
-THEN that GitHub profile opens in a new tab
+## Description
+Employee Page Generator is a command-line application that accepts user inputs to generate an html file that displays a team roster. Add a manager to your team then add as many engineers and interns as you'd like.
 
-WHEN I start the application
-THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
 
-WHEN I enter the team manager’s name, employee ID, email address, and office number
-THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
+## Table of Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Tests](#tests)
+  - [Questions](#questions)
 
-WHEN I select the engineer option
-THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
+<a href = "#installation"></a>
 
-WHEN I select the intern option
-THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
+## Installation
 
-WHEN I decide to finish building my team
-THEN I exit the application, and the HTML is generated
+- Clone this repository to your machine 
+- Make sure you have installed node.js 
+- Navigate to the root directory in your terminal ./employee-page-generator
+- Run the command ```npm install``` to install necessary dependencies located in package.json file.
+
+<a href = "#usage"></a>
+
+## Usage
+
+- Run the command ```node index.js``` to start the application. 
+- Answer the following prompts. 
+- When you are finished answering the prompts check your html file here => ./dist/index.html
+
+<a href = "#credits"></a>
+
+## Credits
+
+- [matt-gross-27](https://github.com/matt-gross-27)
+
+
+<a href = "#license"></a>
+## License
+- MIT
+
+<a href = "#tests"></a>
+
+## Tests
+- The application uses npm package "Jest" for its testing framework. 
+- Run the command ```npm test``` to make sure all Employee object constructors are functioning as expected
+`
+<a href = "questions"></a>
+
+## Questions
+Feel free to reach out with any question you have about Employee Page Generator!
+
+### Contact information:
+- GitHub: [matt-gross-27](https://www.github.com/matt-gross-27)
+- Email: [mbgross111@gmail.com](mailto:mbgross111@gmail.com)
