@@ -42,9 +42,10 @@ Employee Page Generator is a command-line application that accepts user inputs t
 ![page-screen-shot](./assets/images/html-page-ss.png)
 
 <a href = "#demo"></a>
+
 ### Demo Video
 
-![demo-video](./assets/demo/demo-video.gif)
+![demo-video](./assets/demo/demo-employee-page-generator.gif)
 
 
 <a href = "#credits"></a>
