@@ -30,6 +30,13 @@ const mapInterns = internArr => {
   }).join('');
 };
 
+const properPossessive = str => {
+  if (str.slice(-1) === 's') {
+    return `'`
+  } else {
+    return `'s`
+  }
+};
 
 generatePage = pageData => {
   // filter data by Employee role
@@ -66,7 +73,7 @@ generatePage = pageData => {
         </div>
       </div>
       
-      <h4 class="border-left border-right border-dark card-header w-100">Manager's Team</h4>
+      <h4 class="border-left border-right border-dark card-header w-100">${manager.getName()}${properPossessive(manager.getName())} Team</h4>
       
       <section class="border-bottom border-left border-right rounded-bottom border-dark d-flex flex-wrap flex-column flex-md-row justify-content-between px-2 pb-3 mb-5">
         ${mapEngineers(engineers)}
