@@ -44,8 +44,9 @@ Employee Page Generator is a command-line application that accepts user inputs t
 <a href = "#demo"></a>
 
 ### Demo Video
-
 ![demo-video](./assets/demo/demo-employee-page-generator.gif)
+
+["View higher quality demo video here](https://drive.google.com/file/d/1G8zj9iT5HhlDkRej-un3e7LKc3ZkK1Cc/view?usp=sharing)
 
 
 <a href = "#credits"></a>
