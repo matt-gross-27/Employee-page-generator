@@ -7,7 +7,7 @@ const mapEngineers = engineerArr => {
             <h5 class="card-title">${engineer.getName()}</h5>
             <p class="card-text">Employee ID: ${engineer.getId()}</p>
             <p class="card-text">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
-            <p class="card-text"><a href="https://github.com/${engineer.getGithub()}" target="_blank">Github: ${engineer.getGithub}</a></p>
+            <p class="card-text"><a href="https://github.com/${engineer.getGithub()}" target="_blank">Github: ${engineer.getGithub()}</a></p>
           </div>
         </div>
         `
