@@ -195,11 +195,3 @@ promptManager()
     .catch(err => console.log(err));
   })
   .catch(err => console.log(err));
-
-
-// promptManager()
-//   .then(data => {
-//     const { name, id, email, officeNumber } = data;
-//     const manager = new Manager(name, id, email, officeNumber);
-//     promptTeam(manager).then(myTeamArr => console.log(myTeamArr))
-//   })

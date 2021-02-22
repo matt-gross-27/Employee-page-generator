@@ -1,13 +1,13 @@
 const mapEngineers = engineerArr => {
-  return engineerArr.map( ({ name, id, email, github }) => {
+  return engineerArr.map(engineer => {
     return `
         <div class="card mt-3 flex-grow-1 mx-2">
           <h5 class="card-header">Engineer</h5>
           <div class="card-body px-3">
-            <h5 class="card-title">${name}</h5>
-            <p class="card-text">Employee ID: ${id}</p>
-            <p class="card-text"><a href="mailto:${email}">Email: ${email}</a></p>
-            <p class="card-text"><a href="https://github.com/${github}" target="_blank">Github: ${github}</a></p>
+            <h5 class="card-title">${engineer.getName()}</h5>
+            <p class="card-text">Employee ID: ${engineer.getId()}</p>
+            <p class="card-text">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></p>
+            <p class="card-text"><a href="https://github.com/${engineer.getGithub()}" target="_blank">Github: ${engineer.getGithub}</a></p>
           </div>
         </div>
         `
@@ -15,15 +15,15 @@ const mapEngineers = engineerArr => {
 };
 
 const mapInterns = internArr => {
-  return internArr.map( ({ name, id, email, school }) => {
+  return internArr.map(intern => {
     return `
         <div class="card mt-3 flex-grow-1 mx-2">
           <h5 class="card-header">Intern</h5>
           <div class="card-body px-3">
-            <h5 class="card-title">${name}</h5>
-            <p class="card-text">Employee ID: ${id}</p>
-            <p class="card-text"><a href="mailto:${email}">Email: ${email}</a></p>
-            <p class="card-text">School: ${school}</p>
+            <h5 class="card-title">${intern.getName()}</h5>
+            <p class="card-text">Employee ID: ${intern.getId()}</p>
+            <p class="card-text">Email: <a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></p>
+            <p class="card-text">School: ${intern.getSchool()}</p>
           </div>
         </div>
         `
@@ -32,13 +32,13 @@ const mapInterns = internArr => {
 
 
 generatePage = pageData => {
-  // filter data by Employee type (constructor.name)
-  const result = pageData.filter(Obj => Obj.constructor.name === 'Manager');
+  // filter data by Employee role
+  const result = pageData.filter(employee => employee.getRole() === 'Manager');
   manager = result[0];
 
-  const engineers = pageData.filter(Obj => Obj.constructor.name === 'Engineer');
+  const engineers = pageData.filter(employee => employee.getRole() === 'Engineer');
   
-  const interns = pageData.filter(Obj => Obj.constructor.name === 'Intern');
+  const interns = pageData.filter(employee => employee.getRole() === 'Intern');
 
   return `
   <!DOCTYPE html>
@@ -59,9 +59,9 @@ generatePage = pageData => {
       <div class="border border-dark rounded-top">
         <h4 class="card-header border-dark">Manager</h4>
         <div class="card-body">
-          <h5 class="card-title">${manager.name}</h5>
-          <p class="card-text">Employee ID: ${manager.id}</p>
-          <p class="card-text"><a href="mailto:${manager.email}">Email: ${manager.email}</a></p>
+          <h5 class="card-title">${manager.getName()}</h5>
+          <p class="card-text">Employee ID: ${manager.getId()}</p>
+          <p class="card-text">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></p>
           <p class="card-text">Office Number: ${manager.officeNumber}</p>
         </div>
       </div>

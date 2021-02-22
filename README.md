@@ -45,6 +45,7 @@ Employee Page Generator is a command-line application that accepts user inputs t
 
 
 <a href = "#license"></a>
+
 ## License
 - MIT
 
